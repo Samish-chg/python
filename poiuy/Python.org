@@ -1,0 +1,61 @@
+class Employee:
+    def __init__(self, first_name, last_name, position, experience):
+        self.__first_name = first_name
+        self.__last_name = last_name
+        self.__position = position
+        self.__experience = experience
+
+    
+    def get_first_name(self):
+        return self.__first_name
+
+    def set_first_name(self, first_name):
+        self.__first_name = first_name
+
+    def get_last_name(self):
+        return self.__last_name
+
+    def set_last_name(self, last_name):
+        self.__last_name = last_name
+
+    def get_position(self):
+        return self.__position
+
+    def set_position(self, position):
+        self.__position = position
+
+    def get_experience(self):
+        return self.__experience
+
+    def set_experience(self, experience):
+        self.__experience = experience
+
+    
+    standart_number_of_vacation = 28
+
+    
+    def __calculate_vacation(self):
+        if self.__position == "преподаватель":
+            return self.standart_number_of_vacation + 15
+        else:
+            additional_days = max(0, self.__experience - 10) * 2
+            return self.standart_number_of_vacation + additional_days
+
+    
+    def info(self):
+        vacation_days = self.__calculate_vacation()
+        print(f"ФИО: {self.__first_na me} {self.__last_name}")
+        print(f"ДОЛЖНОСТЬ: {self.__position}")
+        print(f"СТАЖ РАБОТЫ: {self.__experience} лет")
+        print(f"ОТПУСКНЫЕ: {self.standart_number_of_vacation} дней + БОНУС {vacation_days - self.standart_number_of_vacation} дней = {vacation_days} дня")
+
+teacher = Employee("Андрей", "Ли", "преподаватель", 8)
+designer = Employee("Маша", "Щитникова", "дизайнер", 15)
+accountant = Employee("Артем", "Бакшы", "бухгалтер", 4)
+
+
+teacher.info()
+print()
+designer.info()
+print()
+accountant.info()
